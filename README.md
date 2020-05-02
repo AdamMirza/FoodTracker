@@ -32,3 +32,6 @@ Hello world!
 
 8. Push the changes you made (this will make everyone else have access to it too)
 `git push`
+
+Amer says hello.
+Testing this by myself. // Alisa
