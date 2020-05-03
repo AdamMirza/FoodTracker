@@ -8,12 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FoodComponent implements OnInit {
 
-  listOfFood: [];
+  listOfFood: Food[] = [];
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  addFood() {
+    this.listOfFood.push(new Food("test", 5, "test"));
   }
 
 }
@@ -26,6 +30,9 @@ export class Food {
 
   // constructor - not sure how this well translate to front-end code
   constructor(name: string, calories: number, description: string) {
+    this.name = name;
+    this.calories = calories;
+    this.description = description;
   }
 
   /*toString() {

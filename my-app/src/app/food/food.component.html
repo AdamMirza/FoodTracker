@@ -1,22 +1,22 @@
 <p>food works!</p>
 
-<button>Add Food</button>
-<p></p>
-
+<button (click)="addFood()">Add Food</button>
 <!--
     <p>{{count}}</p>
     <button (click)="plusOne()">Plus one</button>
 -->
 
+<br>
 <table>
     <tr>
         <th>Food Name</th>
         <th>Calories</th>
         <th>Description</th>
     </tr>
-    <tr>
-        <td>TEST</td>
-        <td>TEST</td>
-        <td>TEST</td>
+    <tr *ngFor="let foodItem of listOfFood; let i = index">
+        <td>{{foodItem.name}}</td>
+        <td>{{foodItem.calories}}</td>
+        <td>{{foodItem.description}}</td>
     </tr>
 </table>
+
