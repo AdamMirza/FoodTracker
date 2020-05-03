@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule  } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-food',
@@ -10,10 +10,12 @@ export class FoodComponent implements OnInit {
 
   todaysListOfFood: Food[] = [];
   choiceListOfFood: Food[] = [];
+  totalCalories: number;
 
   foodForm;
 
   constructor(private formBuilder: FormBuilder) {
+    this.totalCalories = 0;
     this.foodForm = this.formBuilder.group({
       name: '',
       calories: '',
@@ -30,18 +32,25 @@ export class FoodComponent implements OnInit {
 
   moveFoodToChoiceList(index: number) {
     let temp = this.todaysListOfFood.splice(index, 1);
-    this.choiceListOfFood.push(temp[0]);
+    let food = temp[0];
+    this.choiceListOfFood.push(food);
+    this.totalCalories = this.totalCalories - food.calories;
+    console.log(this.totalCalories);
+
   }
-  
+
   moveFoodToTodaysList(index: number) {
     let temp = this.choiceListOfFood.splice(index, 1);
-    this.todaysListOfFood.push(temp[0]);
+    let food = temp[0];
+    this.todaysListOfFood.push(food);
+    this.totalCalories = this.totalCalories + food.calories;
+    console.log(this.totalCalories);
   }
 
   addFoodToChoiceList(foodData) {
     console.log(foodData);
     let temp = new Food(foodData.name, foodData.calories, foodData.description);
-    this.todaysListOfFood.push(temp);
+    this.choiceListOfFood.push(temp);
   }
 
 }

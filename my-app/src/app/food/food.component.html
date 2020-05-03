@@ -11,18 +11,19 @@
         <form [formGroup]="foodForm" (ngSubmit)="addFoodToChoiceList(foodForm.value)">
             <label for="name">Name of Food:</label><br>
             <input type="text" id="name" name="name" formControlName="name"><br>
-        
+
             <label for="calories">Calories:</label><br>
             <input type="number" id="calories" name="calories" formControlName="calories"><br>
-            
+
             <label for="description">Description:</label><br>
             <input type="text" id="description" name="description" formControlName="description"><br>
-        
+
             <button class="button" type="submit">Submit</button>
         </form>
     </div>
     <div class="col-6">
         <h1>Put your calorie total here!</h1>
+        <p>{{totalCalories}}</p>
     </div>
 </div>
 
@@ -62,6 +63,6 @@
                 <td><button (click)="moveFoodToTodaysList(i)">Remove</button></td>
             </tr>
         </table>
-        
+
     </div>
 </div>
