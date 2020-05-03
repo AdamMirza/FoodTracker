@@ -1,15 +1,14 @@
 # FoodTracker
 Welcome to the FoodTracker app!
 
-This is our ReadMe file where we explain stuff!
+This is our readme file where we explain stuff!
 
-Hello this my contribution.
+## How to run Angular
+`ng serve` in the my-app directory in a command prompt (Terminal/Terminal on VS Code/Powershell).
 
-Hello world!
+## How to push a file using command line
 
-# How to push a file using command line
-
-## Via Terminal
+### Via Terminal
 1. Save the changes you make to your files
 
 2. Go to Terminal or Powershell
