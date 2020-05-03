@@ -5,8 +5,21 @@
     <p>{{count}}</p>
     <button (click)="plusOne()">Plus one</button>
 -->
+<hr>
+<form [formGroup]="foodForm" (ngSubmit)="addFoodToList(foodForm.value)">
+    <label for="name">Name of Food:</label><br>
+    <input type="text" id="name" name="name" formControlName="name"><br>
 
+    <label for="calories">Calories:</label><br>
+    <input type="number" id="calories" name="calories" formControlName="calories"><br>
+    
+    <label for="description">Description:</label><br>
+    <input type="text" id="description" name="description" formControlName="description"><br>
+
+    <button class="button" type="submit">Submit</button>
+</form>
 <br>
+<hr>
 <div class="row">
     <div class="col-6">
         <table>

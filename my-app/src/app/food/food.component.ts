@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import * as Collections from 'typescript-collections'; // this doesn't run for some reason
+import { FormBuilder, ReactiveFormsModule  } from '@angular/forms';
 
 @Component({
   selector: 'app-food',
@@ -12,8 +12,15 @@ export class FoodComponent implements OnInit {
   otherListOfFood: Food[] = [];
   globalID: number;
 
-  constructor() {
+  foodForm;
+
+  constructor(private formBuilder: FormBuilder) {
     this.globalID = 0;
+    this.foodForm = this.formBuilder.group({
+      name: '',
+      calories: '',
+      description: ''
+    });
   }
 
   ngOnInit() {
@@ -31,6 +38,12 @@ export class FoodComponent implements OnInit {
   moveFoodToOtherList(index: number) {
     let temp = this.otherListOfFood.splice(index, 1);
     this.listOfFood.push(temp[0]);
+  }
+
+  addFoodToList(foodData) {
+    console.log(foodData);
+    let temp = new Food(0, foodData.name, foodData.calories, foodData.description);
+    this.listOfFood.push(temp);
   }
 
 }
