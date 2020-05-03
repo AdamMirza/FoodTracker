@@ -7,32 +7,38 @@
 -->
 
 <br>
-<table>
-    <tr>
-        <th>Food Name</th>
-        <th>Calories</th>
-        <th>Description</th>
-        <th>Move</th>
-    </tr>
-    <tr *ngFor="let foodItem of listOfFood; let i = index">
-        <td>{{foodItem.name}}</td>
-        <td>{{foodItem.calories}}</td>
-        <td>{{foodItem.description}}</td>
-        <td><button (click)="moveFoodToList(i)">Remove</button></td>
-    </tr>
-</table>
-
-<table>
-    <tr>
-        <th>Food Name</th>
-        <th>Calories</th>
-        <th>Description</th>
-        <th>ID</th>
-    </tr>
-    <tr *ngFor="let foodItem of otherListOfFood; let i = index">
-        <td>{{foodItem.name}}</td>
-        <td>{{foodItem.calories}}</td>
-        <td>{{foodItem.description}}</td>
-        <td><button (click)="moveFoodToOtherList(i)">Remove</button></td>
-    </tr>
-</table>
+<div class="row">
+    <div class="col-6">
+        <table>
+            <tr>
+                <th>Food Name</th>
+                <th>Calories</th>
+                <th>Description</th>
+                <th>Move</th>
+            </tr>
+            <tr *ngFor="let foodItem of listOfFood; let i = index">
+                <td>{{foodItem.name}}</td>
+                <td>{{foodItem.calories}}</td>
+                <td>{{foodItem.description}}</td>
+                <td><button (click)="moveFoodToList(i)">Remove</button></td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-6">
+        <table>
+            <tr>
+                <th>Food Name</th>
+                <th>Calories</th>
+                <th>Description</th>
+                <th>ID</th>
+            </tr>
+            <tr *ngFor="let foodItem of otherListOfFood; let i = index">
+                <td>{{foodItem.name}}</td>
+                <td>{{foodItem.calories}}</td>
+                <td>{{foodItem.description}}</td>
+                <td><button (click)="moveFoodToOtherList(i)">Remove</button></td>
+            </tr>
+        </table>
+        
+    </div>
+</div>
