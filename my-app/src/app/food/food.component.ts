@@ -8,14 +8,12 @@ import { FormBuilder, ReactiveFormsModule  } from '@angular/forms';
 })
 export class FoodComponent implements OnInit {
 
-  listOfFood: Food[] = [];
-  otherListOfFood: Food[] = [];
-  globalID: number;
+  todaysListOfFood: Food[] = [];
+  choiceListOfFood: Food[] = [];
 
   foodForm;
 
   constructor(private formBuilder: FormBuilder) {
-    this.globalID = 0;
     this.foodForm = this.formBuilder.group({
       name: '',
       calories: '',
@@ -27,37 +25,35 @@ export class FoodComponent implements OnInit {
   }
 
   addFood() {
-    this.listOfFood.push(new Food(this.globalID++, "test", 5, "test"));
+    this.choiceListOfFood.push(new Food("test", 5, "test"));
   }
 
-  moveFoodToList(index: number) {
-    let temp = this.listOfFood.splice(index, 1);
-    this.otherListOfFood.push(temp[0]);
+  moveFoodToChoiceList(index: number) {
+    let temp = this.todaysListOfFood.splice(index, 1);
+    this.choiceListOfFood.push(temp[0]);
   }
   
-  moveFoodToOtherList(index: number) {
-    let temp = this.otherListOfFood.splice(index, 1);
-    this.listOfFood.push(temp[0]);
+  moveFoodToTodaysList(index: number) {
+    let temp = this.choiceListOfFood.splice(index, 1);
+    this.todaysListOfFood.push(temp[0]);
   }
 
-  addFoodToList(foodData) {
+  addFoodToChoiceList(foodData) {
     console.log(foodData);
-    let temp = new Food(0, foodData.name, foodData.calories, foodData.description);
-    this.listOfFood.push(temp);
+    let temp = new Food(foodData.name, foodData.calories, foodData.description);
+    this.todaysListOfFood.push(temp);
   }
 
 }
 
 export class Food {
   // field
-  id: number;
   name: string;
   calories: number;
   description: string;
 
   // constructor - not sure how this well translate to front-end code
-  constructor(id: number, name: string, calories: number, description: string) {
-    this.id = id;
+  constructor(name: string, calories: number, description: string) {
     this.name = name;
     this.calories = calories;
     this.description = description;

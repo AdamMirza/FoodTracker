@@ -6,22 +6,31 @@
     <button (click)="plusOne()">Plus one</button>
 -->
 <hr>
-<form [formGroup]="foodForm" (ngSubmit)="addFoodToList(foodForm.value)">
-    <label for="name">Name of Food:</label><br>
-    <input type="text" id="name" name="name" formControlName="name"><br>
+<div class="row">
+    <div class="col-6">
+        <form [formGroup]="foodForm" (ngSubmit)="addFoodToChoiceList(foodForm.value)">
+            <label for="name">Name of Food:</label><br>
+            <input type="text" id="name" name="name" formControlName="name"><br>
+        
+            <label for="calories">Calories:</label><br>
+            <input type="number" id="calories" name="calories" formControlName="calories"><br>
+            
+            <label for="description">Description:</label><br>
+            <input type="text" id="description" name="description" formControlName="description"><br>
+        
+            <button class="button" type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="col-6">
+        <h1>Put your calorie total here!</h1>
+    </div>
+</div>
 
-    <label for="calories">Calories:</label><br>
-    <input type="number" id="calories" name="calories" formControlName="calories"><br>
-    
-    <label for="description">Description:</label><br>
-    <input type="text" id="description" name="description" formControlName="description"><br>
-
-    <button class="button" type="submit">Submit</button>
-</form>
 <br>
 <hr>
 <div class="row">
     <div class="col-6">
+        <h2>Today's Intake</h2>
         <table>
             <tr>
                 <th>Food Name</th>
@@ -29,15 +38,16 @@
                 <th>Description</th>
                 <th>Move</th>
             </tr>
-            <tr *ngFor="let foodItem of listOfFood; let i = index">
+            <tr *ngFor="let foodItem of todaysListOfFood; let i = index">
                 <td>{{foodItem.name}}</td>
                 <td>{{foodItem.calories}}</td>
                 <td>{{foodItem.description}}</td>
-                <td><button (click)="moveFoodToList(i)">Remove</button></td>
+                <td><button (click)="moveFoodToChoiceList(i)">Remove</button></td>
             </tr>
         </table>
     </div>
     <div class="col-6">
+        <h2>Choice of Foods</h2>
         <table>
             <tr>
                 <th>Food Name</th>
@@ -45,11 +55,11 @@
                 <th>Description</th>
                 <th>ID</th>
             </tr>
-            <tr *ngFor="let foodItem of otherListOfFood; let i = index">
+            <tr *ngFor="let foodItem of choiceListOfFood; let i = index">
                 <td>{{foodItem.name}}</td>
                 <td>{{foodItem.calories}}</td>
                 <td>{{foodItem.description}}</td>
-                <td><button (click)="moveFoodToOtherList(i)">Remove</button></td>
+                <td><button (click)="moveFoodToTodaysList(i)">Remove</button></td>
             </tr>
         </table>
         
