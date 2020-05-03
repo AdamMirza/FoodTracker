@@ -1,6 +1,17 @@
 <p>food works!</p>
 
 <button (click)="addFood()">Add Food</button>
+
+<div class="row">
+    <div class="col-12">
+        <form [formGroup]="caloricIntakeForm" (ngSubmit)="addCaloricIntake(caloricIntakeForm.value)">
+            <label for="caloricInput">What is your daily caloric intake?</label><br>
+            <input type="number" id="caloricInput" formControlName="calorieLimit"><br>
+
+            <button class="button" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
 <!--
     <p>{{count}}</p>
     <button (click)="plusOne()">Plus one</button>
@@ -23,9 +34,9 @@
     </div>
     <div class="col-6">
         <h1>Put your calorie total here!</h1>
-        <p>{{totalCalories}}</p>
-        <h1>How many calories you have left (out of 2500)!</h1>
-        <p>{{2500 - totalCalories}}</p>
+        <p>{{this.totalCalories}}</p>
+        <h1>How many calories you have left ({{this.calorieLimit}})!</h1>
+        <p>{{this.calorieLimit - this.totalCalories}}</p>
     </div>
 </div>
 

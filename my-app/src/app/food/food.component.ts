@@ -11,11 +11,17 @@ export class FoodComponent implements OnInit {
   todaysListOfFood: Food[] = [];
   choiceListOfFood: Food[] = [];
   totalCalories: number;
+  calorieLimit: number;
 
   foodForm;
+  caloricIntakeForm;
 
   constructor(private formBuilder: FormBuilder) {
     this.totalCalories = 0;
+    this.calorieLimit = 2500;
+    this.caloricIntakeForm = this.formBuilder.group({
+      calorieLimit: ''
+    })
     this.foodForm = this.formBuilder.group({
       name: '',
       calories: '',
@@ -51,6 +57,11 @@ export class FoodComponent implements OnInit {
     console.log(foodData);
     let temp = new Food(foodData.name, foodData.calories, foodData.description);
     this.choiceListOfFood.push(temp);
+  }
+
+  addCaloricIntake(calorieData) {
+    console.log(calorieData);
+    this.calorieLimit = calorieData.calorieLimit;
   }
 
 }
