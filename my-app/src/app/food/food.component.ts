@@ -7,17 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FoodComponent implements OnInit {
 
-  name: string;
-  calories: number;
-  description: string;
+  listOfFood: [];
 
-  constructor(name: string, calories: number, description: string) {
-    this.name = name;
-    this.calories = calories;
-    this.description = description;
+  constructor() {
   }
 
   ngOnInit() {
   }
 
+}
+
+export class Food {
+  name: string;
+  calories: number;
+  description: string;
 }

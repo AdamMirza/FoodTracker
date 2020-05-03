@@ -7,11 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  count = 1;
+  count = 20;
 
   constructor() { }
 
   ngOnInit() {
+    console.log("Initialized! The beginning count is + " + this.count);
   }
 
   plusOne() {
@@ -20,6 +21,7 @@ export class HomeComponent implements OnInit {
 
   minusOne() {
     this.count--;
+    console.log(this.count);
   }
 
 }
